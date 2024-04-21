@@ -1,0 +1,26 @@
+def minimum_score_for_last_lab(N, S, scores):
+    # Add a placeholder for the last score
+    scores.append(0)
+    
+    # Calculate the current sum excluding the highest and lowest scores
+    current_sum = sum(scores) - max(scores) - min(scores)
+    
+    # Calculate the required score for the last lab to reach at least S
+    required_sum = S - current_sum
+    
+    # The last score needs to be at least the required sum but also at least 0
+    last_score = max(required_sum, 0)
+    
+    # Check if it's possible to achieve the score
+    if last_score > 100:
+        return -1
+    else:
+        return last_score
+
+# Example usage
+N = 5
+S = 180
+scores = [40, 60, 80, 50]
+
+result = minimum_score_for_last_lab(N, S, scores)
+print(result)  # Output should be 70
